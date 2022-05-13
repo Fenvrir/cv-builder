@@ -1,0 +1,17 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html,
+body,
+#root, .App {
+  height: 99%;
+  font-family: "Merriweather", serif, Georgia, serif;
+}
+.wrapper {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  width: 87%;
+  margin: 0 auto;
+}

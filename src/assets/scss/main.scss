@@ -1,10 +1,12 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import './text-helper.scss';
 
 html,
 body,
-#root, .App {
+#root,
+.App {
   height: 99%;
   font-family: "Merriweather", serif, Georgia, serif;
 }
@@ -12,6 +14,7 @@ body,
   min-height: 100%;
   display: flex;
   flex-direction: column;
-  width: 87%;
+  width: 80%;
   margin: 0 auto;
 }
+

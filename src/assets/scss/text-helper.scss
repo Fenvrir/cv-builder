@@ -1,0 +1,13 @@
+input:not([type='range']),
+textarea,
+select {
+  transition: 0.4s all ease;
+  height: 20px;
+  &:focus {
+    width: 100%;
+    outline: none;
+    border-bottom: 1px solid black;
+    background-color: #f3f3f3;
+    padding: 0 4px;
+  }
+}

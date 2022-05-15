@@ -1,13 +1,27 @@
-input:not([type='range']),
+p, input {
+  margin: 0;
+  padding:  0;
+}
+
+hr{
+  margin: 0 0 0.5rem 0;
+}
+
+input {
+  font-family: inherit; 
+  width:100%;
+  border: none;
+  outline: none;
+}
+
+input:not([type="range"]),
 textarea,
 select {
   transition: 0.4s all ease;
-  height: 20px;
   &:focus {
-    width: 100%;
+    border: none;
     outline: none;
-    border-bottom: 1px solid black;
     background-color: #f3f3f3;
-    padding: 0 4px;
+    padding-left: 0.4rem;
   }
 }

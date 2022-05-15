@@ -10,10 +10,10 @@ function App() {
 
 
   return (
-    <div className="App">
+    <div className='App'>
       <div className='wrapper'>
         <Header onClick={handlePrintClick} />
-        <Main inputRef={componentRef} />
+        <Main className='Main' inputRef={componentRef} />
         <Footer />
       </div>
     </div>

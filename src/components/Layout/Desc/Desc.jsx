@@ -1,36 +1,55 @@
 import propTypes from "prop-types";
 import classNames from "classnames";
+import "./Desc.scss";
 import { useState } from "react";
 
-function Desc({ children, className, skillValue, ...attrs }) {
-  const [isEdit, setIsEdit] = useState(false);
+const Descr = ({ isPrimary, isSecondary, className, children, isActive, skillValue, inline_block }) => {
+  const classes = classNames("defaultStyles ", className, {
+    isPrimary,
+    isSecondary,
+    inline_block
+  });
+  const [isEdit, setIsEdit] = useState(true);
   const [value, setValue] = useState(children);
-  const classes = classNames("text-sm box-border ", className, {});
 
-  return (
-    <div className=" mb-1 box-border">
-      {isEdit ? (
-        <input
-          autoFocus
-          value={value}
-          onChange={e => setValue(e.target.value)}
-          onBlur={() => setIsEdit(!isEdit)}
-          className={classes}
-        />
-      ) : (
-        <p className={classes} onClick={() => setIsEdit(!isEdit)} {...attrs}>
-          {value}
-        </p>
+  const desc = isEdit ? (
+    <>
+      <p
+        onClick={() => setIsEdit(false)}
+        className={classes }
+      >
+        {value}
+      </p>{" "}
+      {skillValue && (
+        <p style={{ display: "inline-block" }}>{"- " + skillValue}</p>
       )}
-      {skillValue && <p className=" inline-block">{skillValue}</p>}
-    </div>
+    </>
+  ) : (
+    <input
+      autoFocus
+      type={"text"}
+      className={classes}
+      onChange={(ev) => setValue(ev.target.value)}
+      value={value}
+      onBlur={() => setIsEdit(true)}
+    />
   );
-}
-
-Desc.propTypes = {
-  children: propTypes.node.isRequired,
+  return isActive ?  desc : <p className={classes}>{value}</p>;
 };
 
-Desc.defaultProps = {};
+Descr.propTypes = {
+  isPrimary: propTypes.bool,
+  isSecondary: propTypes.bool,
+  className: propTypes.string,
+  children: propTypes.node.isRequired,
+  isActive: propTypes.bool
+};
 
-export default Desc;
+Descr.defaultProps = {
+  isPrimary: false,
+  isSecondary: false,
+  className: "",
+  isActive: true
+};
+
+export default Descr;

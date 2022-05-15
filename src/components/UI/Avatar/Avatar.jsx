@@ -2,59 +2,76 @@ import React, { useEffect, useState } from "react";
 import propTypes from "prop-types";
 import classNames from "classnames";
 import { CameraIcon } from "@heroicons/react/solid";
+import styled from "styled-components";
 
-function Avatar({ onClick }) {
-  const [isSquare, setIsSquare] = useState(false);
+const Wrapper = styled.div`
+  width: 10rem;
+  height: 10rem;
+  border-radius: ${(props) => (props.isSquare ? "10px" : "50%")};
+  background-color: #bfbfbf;
+  margin: 0 auto;
+
+  input {
+    display: none;
+  }
+
+  label,
+  label div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 10rem;
+    height: 10rem;
+    margin: 0 auto;
+    cursor: pointer;
+    border-radius: ${(props) => (props.isSquare ? "10px" : "50%")};
+  }
+`;
+
+function Avatar({ onClick, isSquare }) {
   const [selectedFile, setSelectedFile] = useState(null);
   const [preview, setPreview] = useState(null);
 
   useEffect(() => {
-    const objectUrl = selectedFile && URL.createObjectURL(selectedFile);
+    let objectUrl = selectedFile && URL.createObjectURL(selectedFile);
     setPreview(objectUrl);
+    console.log(preview);
+
     return () => URL.revokeObjectURL(objectUrl);
   }, [selectedFile]);
-
-  const rounded = isSquare ? "rounded-lg" : "rounded-[50%]";
-
-  const imgClasses = classNames(
-    " flex items-center hover:cursor-pointer justify-center w-40 h-40   " + rounded
-  );
   return (
-    <div onClick={onClick} className={"w-40 h-40 bg-[#bfbfbf]  " + rounded}>
+    <Wrapper isSquare={isSquare}>
       <input
-        className="  hidden "
+        id="Avatar"
+        value=""
         type="file"
         onChange={(e) => setSelectedFile(e.target.files[0])}
-        value=""
-        id="Avatar"
       />
-      <label className={imgClasses} htmlFor="Avatar">
+      <label htmlFor="Avatar">
         {preview ? (
           <div
-            className={imgClasses}
             style={{
               backgroundImage: `url(${preview})`,
-              backgroundSize: "cover",
               width: "100%",
               height: "100%",
+              backgroundSize: "cover",
             }}
           ></div>
         ) : (
-          <CameraIcon
-            className=" w-32 text-gray-600"
-            aria-hidden="true"
-          />
+          "Upload image"
         )}
       </label>
-    </div>
+    </Wrapper>
   );
 }
 
 Avatar.propTypes = {
   onClick: propTypes.func,
+  isSquare: propTypes.bool,
 };
 
 Avatar.defaultProps = {
   onClick: () => {},
+  isSquare: true,
 };
 export default Avatar;

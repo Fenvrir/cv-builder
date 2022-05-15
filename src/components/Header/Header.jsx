@@ -1,28 +1,37 @@
 import React from "react";
 import "./Header.scss";
 import { PrinterIcon } from "@heroicons/react/solid";
+import styled from "styled-components";
 
-const Header = ({onClick}) => {
+const Container = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 0.75rem;
+  div {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-left: 0.5rem;
+  }
+`;
+
+const Header = ({ onClick }) => {
   return (
     <header className="Header">
-      <div className="container">
-        <div className="flex justify-between items-center mt-3">
-          <div className=" text-2xl font-bold ml-2">
-            <span>CV Builder</span>
-          </div>
-          <button
-            type="button"
-            onClick={() => onClick()}
-            className="inline-flex px-4 py-2 border border-gray-300 rounded-md shadow-md text-sm font-medium text-gray-800 bg-white hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-          >
-            <PrinterIcon
-              className="-ml-1 mr-2 h-5 w-5 text-gray-600"
-              aria-hidden="true"
-            />
-            Print
-          </button>
+      <Container>
+        <div className="Header_wrapper">
+          <span>CV Builder</span>
         </div>
-      </div>
+        <button
+          type="button"
+          onClick={() => onClick()}
+        >
+          <PrinterIcon
+            aria-hidden="true"
+          />
+          Print
+        </button>
+      </Container>
     </header>
   );
 };

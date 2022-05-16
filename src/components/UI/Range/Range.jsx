@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useState } from "react";
 import propTypes from "prop-types";
 import Desc from "../../Layout/Desc/Desc";
 import "./Range.scss";
@@ -7,37 +7,25 @@ const Wrapper = styled.div`
   display: inline-block;
   width: 33%;
   margin: 0.4rem 0;
-`;
-
-const Input = styled.input`
-  width: 97%;
-  height: 6px;
-  margin: 0 0.4rem;
-  overflow: hidden;
-  cursor: pointer;
-  -webkit-appearance: none;
-
-  &::-webkit-slider-runnable-track {
-    background: #ddd;
+  p {
+    margin: 0 0 5px 5px;
   }
-
-  &::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    width: 20px;
-    height: 40px;
-    background: dodgerblue;
-    box-shadow: -100vw 0 0 100vw dodgerblue;
-    border: 1px solid #999;
+  input {
+    display: block;
+    width: 175px;
+    cursor: pointer;
   }
 `;
+
 function Range({ onClick }) {
   const [value, setValue] = useState(60);
 
   return (
     <Wrapper>
-      <Desc inline_block skillValue={value}>Name </Desc>
+      <Desc inline_block skillValue={value}>
+        Name
+      </Desc>
       <input
-        className={"text-gray-500"}
         onChange={(e) => {
           setValue(e.target.value);
           console.log(e.target.value);

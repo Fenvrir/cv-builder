@@ -13,6 +13,24 @@ const Container = styled.div`
     font-weight: 700;
     margin-left: 0.5rem;
   }
+ button{
+   border: none;
+   background-color: #fff;
+   cursor: pointer;
+   font-size: 1.3rem;
+   font-weight: bold;
+   &:hover{
+    background-color: #f3f3f3;
+    border-radius: 20px;
+    padding: 0 4px 0 4px;
+   }
+ }
+  .icon{
+    height: 1.5rem;
+    width: 1.5rem;
+    margin: 0 5px -5px 0;
+
+  }
 `;
 
 const Header = ({ onClick }) => {
@@ -22,13 +40,10 @@ const Header = ({ onClick }) => {
         <div className="Header_wrapper">
           <span>CV Builder</span>
         </div>
-        <button
-          type="button"
-          onClick={() => onClick()}
-        >
-          <PrinterIcon
-            aria-hidden="true"
-          />
+        <div>
+        </div>
+        <button type="button" onClick={() => onClick()}>
+          <PrinterIcon className="icon" aria-hidden="true" />
           Print
         </button>
       </Container>

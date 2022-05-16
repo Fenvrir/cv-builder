@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from "react";
 import propTypes from "prop-types";
-import classNames from "classnames";
-import { CameraIcon } from "@heroicons/react/solid";
 import styled from "styled-components";
 
 const Wrapper = styled.div`
@@ -28,17 +26,16 @@ const Wrapper = styled.div`
   }
 `;
 
-function Avatar({ onClick, isSquare }) {
+function Avatar({ isSquare }) {
   const [selectedFile, setSelectedFile] = useState(null);
   const [preview, setPreview] = useState(null);
 
   useEffect(() => {
     let objectUrl = selectedFile && URL.createObjectURL(selectedFile);
     setPreview(objectUrl);
-    console.log(preview);
-
     return () => URL.revokeObjectURL(objectUrl);
   }, [selectedFile]);
+
   return (
     <Wrapper isSquare={isSquare}>
       <input

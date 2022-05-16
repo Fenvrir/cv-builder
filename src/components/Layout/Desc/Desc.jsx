@@ -1,7 +1,8 @@
 import propTypes from "prop-types";
 import classNames from "classnames";
 import "./Desc.scss";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+
 
 const Descr = ({ isPrimary, isSecondary, className, children, isActive, skillValue, inline_block }) => {
   const classes = classNames("defaultStyles ", className, {
@@ -12,6 +13,13 @@ const Descr = ({ isPrimary, isSecondary, className, children, isActive, skillVal
   const [isEdit, setIsEdit] = useState(true);
   const [value, setValue] = useState(children);
 
+  useEffect(() => {
+    if(!value) {
+      setValue('Enter text')
+    }
+  }, [value]);
+
+ 
   const desc = isEdit ? (
     <>
       <p

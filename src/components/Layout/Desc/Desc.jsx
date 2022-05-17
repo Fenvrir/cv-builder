@@ -34,7 +34,7 @@ const Descr = ({
     <>
       <p onClick={() => setIsEdit(false)} className={classes}>
         {value}
-      {<PencilIcon width={'20px'} className="icon_pencil"/>}
+      {<PencilIcon width={'20px'} className="desc_icon_pencil"/>}
       </p>{" "}
       {skillValue && (
         <p style={{ display: "inline-block" }}>{"- " + skillValue}</p>

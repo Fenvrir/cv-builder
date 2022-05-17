@@ -13,3 +13,13 @@
 .inline_block{
   display: inline-block;
 }
+
+.icon_pencil {
+  opacity: 0 !important;
+  width: 20px;
+}
+p:hover .icon_pencil {
+  opacity: 1 !important;
+  margin-left: 3px;
+}
+

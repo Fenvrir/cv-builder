@@ -27,7 +27,7 @@ const Container = styled.div`
       &:hover {
         background-color: #f3f3f3;
         border-radius: 20px;
-        font-size: 1.4rem;
+        transform: scale(1.1, 1.1);
       }
     }
   }

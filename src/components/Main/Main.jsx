@@ -75,7 +75,7 @@ const Main = ({ className, inputRef }) => {
               <Avatar isSquare={false} />
             </Sidebar>
             <Content>
-              <Title size={"1"}>Jakub Kessler</Title>
+              <Title isShowTextEdit size={"1"}>Jakub Kessler</Title>
               <Desc isPrimary>Marketing Manager</Desc>
             </Content>
           </Row>
@@ -104,6 +104,7 @@ const Main = ({ className, inputRef }) => {
                 onClick={onClickWorkHandler}
                 isShowButton
                 isUppercase
+                isShowTextEdit
                 size={"2"}
               >
                 Experience
@@ -121,6 +122,7 @@ const Main = ({ className, inputRef }) => {
                 onClick={onClickExpHandler}
                 isShowButton
                 isUppercase
+                isShowTextEdit
                 size={"2"}
               >
                 Education
@@ -138,6 +140,7 @@ const Main = ({ className, inputRef }) => {
                 onClick={onClickSkillHandler}
                 isShowButton
                 isUppercase
+                isShowTextEdit
                 size={"2"}
               >
                 Skills
